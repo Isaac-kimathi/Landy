@@ -8,3 +8,7 @@ def home(request):
 def land_detail(reuest, pk):
     record = get_object_or_404(LandRecord, pk=pk)
     return render(request, 'landie/land_detail.html', {'record': record})
+
+def register(request):
+    return render(request, 'landie/register.html')
+

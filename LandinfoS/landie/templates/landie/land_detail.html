@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Land Details</title>
+	</head>
+	<body>
+		<h1>{{ record.location }} Details</h1>
+		<p>Size: {{ record.size_in_acres }} acres</p>
+		<p>Purchase Date: {{ record.purchase_date }}</p>
+		<p>Owner: {{ record.owner.first_name }} {{ record.owner.last_name }}</p>
+		<a href="{% url 'home' %}">Back to Home</a>
+	</body>
+</html>

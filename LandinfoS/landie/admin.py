@@ -7,4 +7,4 @@ class LandOwnerAdmin(admin.ModelAdmin):
 
 @admin.register(LandRecord)
 class LandRecordAdmin(admin.ModelAdmin):
-    list_display = ('location', 'size_in_acres', 'purchase_date', 'owner') 
+    list_display = ('location', 'size_in_acres', 'purchase_date', 'owner')
