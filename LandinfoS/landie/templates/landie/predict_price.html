@@ -1,1 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+	<h2>Land Price Prediction</h2>
+	<form method="POST">
+		    {% csrf_token %}
+		    <div class="mb-3">
+			        <label for="area_sqft" class="form-label">Land Area (sq ft):</label>
+				    <input type="number" class="form-control" name="area_sqft" required>
+		    </div>
+		    <div class="mb-3">
+			        <label for="land_type" class="form-label">Land Type:</label>
+				<select class="form-control" name="land_type">
+					<option value="Residential">Residential</option>
+					<option value="Commercial">Commercial</option>
+				</select>
+		    </div>
+		    <button type="submit" class="btn btn-primary">Predict Price</button>
+	</form>
+
+	{% if predicted_price %}
+	    <div class="mt-4">
+		    <h4>Estimated Price: ${{ predicted_price }}</h4>
+	    </div>
+	{% endif %}
+</div>
+{% endblock %}
 
