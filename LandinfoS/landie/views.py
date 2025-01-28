@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import LandRecord
 import joblib
+from django.http import JsonResponse
+import openai
 
 def home(request):
     records = LandRecord.objects.all()
@@ -26,3 +28,15 @@ def predict_price(request):
         return render(request, 'predict_price.html', {'predicted_price': prediction[0]})
 
     return render(request, 'predict_price.html')
+
+def chatbot_response(request):
+    if request.method == "POST":
+            user_message = request.POST.get('message')
+            openai.api_key = "Valid API key to be set"
+            response = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[{"role": "user", "content": user_message}]
+            )
+
+            return JsonResponse({"response": response.choices[0].message['content']})
+        return JsonResponse({"error": "Invalid request"})
